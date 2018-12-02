@@ -224,7 +224,7 @@ app.use(async (ctx, next) => {
 		ctx.body = {
 			id: resp.data.id,
 			nickname: resp.data.nickname,
-			email: resp.data.nickname,
+			email: resp.data.email,
 			token: resp.data.token,
 		};
 	}
@@ -239,9 +239,22 @@ app.use(async (ctx, next) => {
 	else if (method === 'GET' && path.startsWith('/api/user.find_nickname')) {
 		ctx.status = USERS.findNickname(ctx.query.nickname) ? 201 : 404;
 	}
+	else if (method === 'GET' && path.startsWith('/api/quest.get')) {
+		ctx.status = 200;
+		ctx.body = {
+			id: 'quest_one_id',
+			title: 'The Quest title from network',
+			description: 'Лучший квест из тех, в которые я когда-либо играл. Реально, попробуйте это топ, отвечаю!',
+			imagePath: 'http://2d.by/wallpapers/v/vodopad_4.jpg',
+			currCardId: 'card_one_id',
+			authorNickname: 'SaneevIlya',
+			playerCount: '437',
+			stage: 'end'
+		};
+	}
 
 	await next();
 });
 
-app.listen(5000, () => console.log('Server is listening at 5000 port'));
+app.listen(6000, () => console.log('Server is listening at 5000 port'));
 
