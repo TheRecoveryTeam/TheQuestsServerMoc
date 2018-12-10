@@ -112,7 +112,7 @@ class Users {
 				email: 'vv-ch@bk.ru',
 				nickname: 'VitalyCherkov',
 				password: '12345678',
-				token: 'vitalytoken',
+				token: '',
 			}
 		};	
 	}
@@ -175,6 +175,9 @@ class Users {
 	}
 
 	getCurUser(token) {
+		if (!token || token.length === 0) {
+			return null;
+		}
 		for (let email of Object.keys(this.users)) {
 			if (this.users[email].token === token) {
 				return email;
@@ -203,6 +206,7 @@ class Users {
 				}
 			};
 		}
+		this.users[email].token = `${email}${this.users[email].nickname}${Math.round(Math.random() * 1000)}`;
 		return {
 			error: false,
 			data: this.users[email],
