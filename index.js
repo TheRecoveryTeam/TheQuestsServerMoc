@@ -9,16 +9,7 @@ const cardsMoc = {
 		title: 'The first card title из сети',
 		description: 'The first card description из сети. И картинка тоже из сети',
 		type: 'choose',
-		links: [
-			{
-				answer: 'Answer 2',
-				resources: [],
-			},
-			{
-				answer: 'Answer 3',
-				resources: [],
-			},
-		],
+		links: [ 'Answer 2', 'Answer 3' ],
 		imagePath: 'http://s3.party.pl/newsy/zespol-queen-318346-article.jpg',
 	},
 	'card_two_id': {
@@ -27,16 +18,7 @@ const cardsMoc = {
 		title: 'The second card title',
 		description: 'The second card description',
 		type: 'choose',
-		links: [
-			{
-				answer: 'Answer 1',
-				resources: [],
-			},
-			{
-				answer: 'Answer 3',
-				resources: [],
-			},
-		],
+		links: [ 'Answer 1', 'Answer 3' ],
 		imagePath: 'http://www.nebeep.com/wp-content/uploads/2015/04/queen.png',
 	},
 	'card_three_id': {
@@ -45,16 +27,7 @@ const cardsMoc = {
 		title: 'The third card title',
 		description: 'The third card description',
 		type: 'choose',
-		links: [
-			{
-				answer: 'Answer 1',
-				resources: [],
-			},
-			{
-				answer: 'Answer 2',
-				resources: [],
-			},
-		],
+		links: [ 'Answer 1', 'Answer 2' ],
 		imagePath: 'http://rock-history.ru/upload/000/u1/011/da639e95.jpg',
 	}
 };
@@ -166,6 +139,10 @@ class Users {
 		}
 	}
 
+	checkAuth(token) {
+		return !!this.getCurUser(token);
+	}
+
 	login({ email, password } = {}) {
 		if (!this.users[email] || this.users[email].password !== password) {
 			return {
@@ -249,12 +226,38 @@ app.use(async (ctx, next) => {
 			currCardId: 'card_one_id',
 			authorNickname: 'SaneevIlya',
 			playerCount: '437',
-			stage: 'end'
+			stage: 'end',
+			resources: [
+				{
+					name: 'Health',
+					value: 50,
+				},
+				{
+					name: 'Sward',
+					value: 30,
+				},
+				{
+					name: 'Power',
+					value: 75,
+				},
+				{
+					name: 'Money',
+					value: 60,
+				}
+			]
 		};
+	}
+	else if (method === 'GET' && path.startsWith('/api/user.check_auth')) {
+		if (USERS.checkAuth(ctx.request.token)) {
+			ctx.status = 201;
+		}
+		else {
+			ctx.status = 401;
+		}
 	}
 
 	await next();
 });
 
-app.listen(6000, () => console.log('Server is listening at 5000 port'));
+app.listen(6000, () => console.log('Server is listening at 6000 port'));
 
