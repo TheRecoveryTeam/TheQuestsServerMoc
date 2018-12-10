@@ -26,7 +26,7 @@ const cardsMoc = {
 		questId: 'quest_one_id',
 		title: 'The third card title',
 		description: 'The third card description',
-		type: 'choose',
+		type: 'finish',
 		links: [ 'Answer 1', 'Answer 2' ],
 		imagePath: 'http://rock-history.ru/upload/000/u1/011/da639e95.jpg',
 	}
@@ -35,15 +35,66 @@ const cardsMoc = {
 const cardAnswersMoc = {
 	'Answer 1': {
 		nextCardId:	'card_one_id',
-		resources: []
+		resources: [
+			{
+				name: 'Health',
+				value: 20,
+			},
+			{
+				name: 'Sward',
+				value: 50,
+			},
+			{
+				name: 'Power',
+				value: 70,
+			},
+			{
+				name: 'Money',
+				value: 40,
+			}
+		]
 	},
 	'Answer 2': {
 		nextCardId: 'card_two_id',
-		resources: []
+		resources: [
+			{
+				name: 'Health',
+				value: 30,
+			},
+			{
+				name: 'Sward',
+				value: 45,
+			},
+			{
+				name: 'Power',
+				value: 60,
+			},
+			{
+				name: 'Money',
+				value: 45,
+			}
+		],
 	},
 	'Answer 3': {
 		nextCardId: 'card_three_id',
-		resources: []
+		resources: [
+			{
+				name: 'Health',
+				value: 70,
+			},
+			{
+				name: 'Sward',
+				value: 60,
+			},
+			{
+				name: 'Power',
+				value: 50,
+			},
+			{
+				name: 'Money',
+				value: 60,
+			}
+		],
 	},
 }
 
