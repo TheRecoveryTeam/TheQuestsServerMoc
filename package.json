@@ -12,6 +12,9 @@
     "koa": "^2.6.2",
     "koa-bearer-token": "^1.0.0",
     "koa-body": "^4.0.4",
-    "koa-bodyparser": "^4.2.1"
+    "koa-bodyparser": "^4.2.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "simple-oauth2": "^2.2.1"
   }
 }

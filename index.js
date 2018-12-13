@@ -1,6 +1,22 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
-const bearerToken = require('koa-bearer-token')
+const bearerToken = require('koa-bearer-token');
+const requester = require('request-promise');
+const fs = require('fs');
+
+const credentials = {
+	client: {
+		id: '6779621',
+		secret: 'ZVMCxkWRolVxKWAUaAjk'
+	},
+	auth: {
+		tokenHost: 'https://oauth.vk.com/access_token'
+	}
+};
+
+const oauth2 = require('simple-oauth2').create(credentials);
+
+
 
 const cardsMoc = {
 	'card_one_id': {
@@ -175,10 +191,12 @@ class Users {
 	}
 
 	getCurUser(token) {
+		console.log('token', token);
 		if (!token || token.length === 0) {
 			return null;
 		}
 		for (let email of Object.keys(this.users)) {
+			console.log(email, ": ", this.users[email].token === token);
 			if (this.users[email].token === token) {
 				return email;
 			}
@@ -230,6 +248,7 @@ app.use(bearerToken({
 app.use(async (ctx, next) => {
 	const { method, path, request } = ctx;
 	console.log(method, path, ctx.request.body);
+	let wasAsync = false;
 
 	if (path.startsWith('/api/card.get')) {
 		const { cardId } = ctx.query;
@@ -310,9 +329,67 @@ app.use(async (ctx, next) => {
 			ctx.status = 401;
 		}
 	}
+	else if (method === 'GET' && path.startsWith('/api/vk_oauth')) {
+		wasAsync = true;
 
-	await next();
+		const SECRET = 'ZVMCxkWRolVxKWAUaAjk';
+		const CLIENT_ID = '6779621';
+		const REDIRECT_URI = 'http://127.0.0.1:8008/api/vk_oauth';
+		const { code } = ctx.query;
+
+		const handleGet = async (body) => {
+			const { access_token, user_id } = JSON.parse(body);
+			
+			const resp = await requester({
+				url: 'https://api.vk.com/method/users.get',
+				qs: {
+					user_ids: user_id,
+					v: '5.92',
+					access_token
+				}
+			});
+
+			const { first_name, last_name } = JSON.parse(resp).response[0];
+
+			USERS.users[`${user_id}`] = {
+				id: `${user_id}`,
+				email: `${user_id}`,
+				nickname: `${first_name} ${last_name}`,
+				password: '12345678',
+				token: access_token,
+			};
+			const { id, email, nickname, token } = USERS.users[user_id];
+
+			ctx.status = 200;
+			ctx.body = {
+				id, email, nickname, token
+			};
+			console.log(ctx.status, ctx.body);
+		};
+
+		try {
+			const res = await requester({
+				url: 'https://oauth.vk.com/access_token',
+				qs: {
+					client_id: CLIENT_ID,
+					redirect_uri: REDIRECT_URI,
+					client_secret: SECRET,
+					code,
+				},
+			});
+
+			await handleGet(res);
+		}
+		catch (e) {
+			console.log(e);
+			ctx.status = 401;
+		}
+	}
+	
+	if (!wasAsync) {
+		await next();
+	}
 });
 
-app.listen(6000, () => console.log('Server is listening at 6000 port'));
+app.listen(8008, () => console.log('Server is listening at 8008 port'));
 
