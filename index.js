@@ -429,7 +429,7 @@ class Quest {
 		this.title = "Путешествие рыцаря";
 		this.description = "В этом квесте вы узнаете, что такое рыцарская жизнь!";
 		this.authorNickname = "Isaev_and_Belov";
-		this.playerCount = 1;
+		this.playerCount = "3";
 		this.currCardId = 'new_card_1';
 		this.stage = 'end';
 		this.imagePath = '';
