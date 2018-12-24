@@ -54,7 +54,7 @@ const cardsMoc = {
 		description: 'Храбрый, молодой рыцарь, который пока не знает, чего хочет от жизни',
 		type: 'choose',
 		links: ['Отправиться в замок к королю'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/1.png',
 	},
 
 
@@ -65,7 +65,7 @@ const cardsMoc = {
 		description: 'У короля дракон украл прекрасную жену, правитель просит вас о помощи',
 		type: 'choose',
 		links: ['Согласиться и уйти', 'Отказаться и уйти'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/4.png',
 	},
 
 	'new_card_3': {
@@ -75,7 +75,7 @@ const cardsMoc = {
 		description: 'Вы заходите в роскошный зал',
 		type: 'choose',
 		links: ['Найти место для отдыха', 'Осмотреть комнату со знаменем'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/17.png',
 	},
 
 	'new_card_4': {
@@ -85,7 +85,7 @@ const cardsMoc = {
 		description: 'Вы осматриваете знамя',
 		type: 'choose',
 		links: ['Заглянуть за знамя'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/15.png',
 	},
 
 	'new_card_5': {
@@ -95,7 +95,7 @@ const cardsMoc = {
 		description: 'Вы обнаруживаете старый меч',
 		type: 'choose',
 		links: ['Выйти в коридор', 'Продолжить поиски'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/7.png',
 	},
 
 	'new_card_6': {
@@ -105,7 +105,7 @@ const cardsMoc = {
 		description: 'На выходе вы нашли сверкающий меч',
 		type: 'choose',
 		links: ['Выйти из замка'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/10.png',
 	},
 
 	'new_card_7': {
@@ -115,7 +115,7 @@ const cardsMoc = {
 		description: 'Около входа в замок стоит великолепный конь, владелец предлагает его в обмен на сверкающий меч',
 		type: 'choose',
 		links: ['Обменять', 'Пройти мимо'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/5.png',
 	},
 
 	'new_card_8': {
@@ -125,7 +125,7 @@ const cardsMoc = {
 		description: 'Продолжив путь, вы замечаете пролетающего рядом дракона, в лапах которого видите королеву',
 		type: 'choose',
 		links: ['Вызвать дракона на поединок', 'Вызвать дракона на переговоры'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/3.png',
 	},
 
 	'new_card_9': {
@@ -135,7 +135,7 @@ const cardsMoc = {
 		description: 'Вы обменяли королеву на коня',
 		type: 'choose',
 		links: ['Очаровать харизмой', 'Сопроводить в королевство'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/2.png',
 	},
 
 	'new_card_10': {
@@ -149,7 +149,7 @@ const cardsMoc = {
 		хочешь к нему, значит есть за что...`,
 		type: 'choose',
 		links: ['Завершить'],
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/4.png',
 	},
 
 	'new_card_11': {
@@ -158,7 +158,7 @@ const cardsMoc = {
 		title: 'Конец!',
 		description: 'Поздравляю вы получили щедрый подарок и уважение короля',
 		type: 'end',
-		imagePath: '',
+		imagePath: 'http://46.101.176.63/static/img/1.png',
 	},
 };
 
@@ -436,7 +436,7 @@ class Quest {
 		this.playerCount = "3";
 		this.currCardId = 'new_card_1';
 		this.stage = 'end';
-		this.imagePath = '';
+		this.imagePath = 'http://46.101.176.63/static/img/1.png';
 		this.resources = [
 			{
 				"name": "здровье",
