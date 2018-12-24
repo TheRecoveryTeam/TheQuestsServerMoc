@@ -232,12 +232,16 @@ const cardAnswersMoc = {
 	},
 	'Вызвать дракона на переговоры': {
 		nextCardId: 'new_card_9',
+		resources: [],
 	},
 	'Сопроводить в королевство': {
 		nextCardId: 'new_card_10',
+		resources: [],
+
 	},
 	'Завершить': {
 		nextCardId: 'new_card_11',
+		resources: [],
 	},
 
 	'Answer 1': {
