@@ -45,10 +45,201 @@ const cardsMoc = {
 		type: 'finish',
 		links: [ 'Answer 1', 'Answer 2' ],
 		imagePath: 'http://rock-history.ru/upload/000/u1/011/da639e95.jpg',
-	}
+	},
+
+	'new_card_1': {
+		id: 'new_card_1',
+		questId: 'quest_one_id',
+		title: 'Рыцарь',
+		description: 'Храбрый, молодой рыцарь, который пока не знает, чего хочет от жизни',
+		type: 'choose',
+		links: ['Отправиться в замок к королю'],
+		imagePath: '',
+	},
+
+
+	'new_card_2': {
+		id: 'new_card_2',
+		questId: 'quest_one_id',
+		title: 'Замок',
+		description: 'У короля дракон украл прекрасную жену, правитель просит вас о помощи',
+		type: 'choose',
+		links: ['Согласиться и уйти', 'Отказаться и уйти'],
+		imagePath: '',
+	},
+
+	'new_card_3': {
+		id: 'new_card_3',
+		questId: 'quest_one_id',
+		title: 'Гостиная',
+		description: 'Вы заходите в роскошный зал',
+		type: 'choose',
+		links: ['Найти место для отдыха', 'Осмотреть комнату со знаменем'],
+		imagePath: '',
+	},
+
+	'new_card_4': {
+		id: 'new_card_4',
+		questId: 'quest_one_id',
+		title: 'Комната со знаменем',
+		description: 'Вы осматриваете знамя',
+		type: 'choose',
+		links: ['Заглянуть за знамя'],
+		imagePath: '',
+	},
+
+	'new_card_5': {
+		id: 'new_card_5',
+		questId: 'quest_one_id',
+		title: 'Меч',
+		description: 'Вы обнаруживаете старый меч',
+		type: 'choose',
+		links: ['Выйти в коридор', 'Продолжить поиски'],
+		imagePath: '',
+	},
+
+	'new_card_6': {
+		id: 'new_card_6',
+		questId: 'quest_one_id',
+		title: 'Сверкающий меч',
+		description: 'На выходе вы нашли сверкающий меч',
+		type: 'choose',
+		links: ['Выйти из замка'],
+		imagePath: '',
+	},
+
+	'new_card_7': {
+		id: 'new_card_7',
+		questId: 'quest_one_id',
+		title: 'Конь',
+		description: 'Около входа в замок стоит великолепный конь, владелец предлагает его в обмен на сверкающий меч',
+		type: 'choose',
+		links: ['Обменять', 'Пройти мимо'],
+		imagePath: '',
+	},
+
+	'new_card_8': {
+		id: 'new_card_8',
+		questId: 'quest_one_id',
+		title: 'Летящий дракон',
+		description: 'Продолжив путь, вы замечаете пролетающего рядом дракона, в лапах которого видите королеву',
+		type: 'choose',
+		links: ['Вызвать дракона на поединок', 'Вызвать дракона на переговоры'],
+		imagePath: '',
+	},
+
+	'new_card_9': {
+		id: 'new_card_9',
+		questId: 'quest_one_id',
+		title: 'Прекрасная королева',
+		description: 'Вы обменяли королеву на коня',
+		type: 'choose',
+		links: ['Очаровать харизмой', 'Сопроводить в королевство'],
+		imagePath: '',
+	},
+
+	'new_card_10': {
+		id: 'new_card_10',
+		questId: 'quest_one_id',
+		title: 'Королевство',
+		description: `Короче, королева, я тебя спас и в благородство играть не буду:
+		выполнишь для меня пару заданий - и мы в расчете. Заодно
+		посмотрим как быстро у тебя голова после дракона прояянится.
+		Не знаю, на кой ляд тебе этот король сдался, но я в чужие дела не лезу,
+		хочешь к нему, значит есть за что...`,
+		type: 'choose',
+		links: ['Завершить'],
+		imagePath: '',
+	},
+
+	'new_card_11': {
+		id: 'new_card_11',
+		questId: 'quest_one_id',
+		title: 'Конец!',
+		description: 'Поздравляю вы получили щедрый подарок и уважение короля',
+		type: 'end',
+		imagePath: '',
+	},
 };
 
 const cardAnswersMoc = {
+	'Отправиться в замок к королю': {
+		nextCardId: 'new_card_2',
+		resources: [
+			{
+				name: 'усталость',
+				value: 5,
+			},
+		],
+	},
+	'Согласиться и уйти': {
+		nextCardId: 'new_card_3',
+		resources: [
+			{
+				name: 'усталость',
+				value: 5,
+			},
+		],
+	},
+	'Осмотреть комнату со знаменем': {
+		nextCardId: 'new_card_4',
+		resources: [
+			{
+				name: 'усталость',
+				value: 2,
+			},
+		],
+	},
+	'Заглянуть за знамя': {
+		nextCardId: 'new_card_5',
+		resources: [
+			{
+				name: 'урон',
+				value: 10,
+			}
+		]
+	},
+	'Выйти в коридор': {
+		nextCardId: 'new_card_6',
+		resources: [
+			{
+				name: 'урон',
+				value: 30,
+			},
+			{
+				name: 'усталость',
+				value: 2
+			}
+		]
+	},
+	'Выйти из замка': {
+		nextCardId: 'new_card_7',
+		resources: [
+			{
+				name: 'усталость',
+				value: 2
+			},
+		],
+	},
+	'Пройти мимо': {
+		nextCardId: 'new_card_8',
+		resources: [
+			{
+				name: 'усталость',
+				value: 2
+			},
+		],
+	},
+	'Вызвать дракона на переговоры': {
+		nextCardId: 'new_card_9',
+	},
+	'Сопроводить в королевство': {
+		nextCardId: 'new_card_10',
+	},
+	'Завершить': {
+		nextCardId: 'new_card_11',
+	},
+
 	'Answer 1': {
 		nextCardId:	'card_one_id',
 		resources: [
@@ -232,7 +423,77 @@ class Users {
 	}
 }
 
+class Quest {
+	constructor () {
+		this.id = 'quest_one_id';
+		this.title = "Путешествие рыцаря";
+		this.description = "В этом квесте вы узнаете, что такое рыцарская жизнь!";
+		this.authorNickname = "Isaev_and_Belov";
+		this.playerCount = 1;
+		this.currCardId = 'new_card_1';
+		this.stage = 'end';
+		this.imagePath = '';
+		this.resources = [
+			{
+				"name": "здровье",
+				"value": 50,
+			},
+			{
+				"name": "усталость",
+				"value": 50,
+			},
+			{
+				"name": "урон",
+				"value": 50,
+			},
+		]
+	}
+
+	updateResources(delta) {
+		this.resources = this.resources.map(({ name, value }) => {
+			let newValue = value;
+			delta.map(cur => {
+				if (cur.name === name) {
+					newValue += cur.value;
+				}
+			});
+			return {
+				name,
+				value: newValue,
+			};
+		});
+	}
+
+	doAnswer(answer) {
+		const link = cardAnswersMoc[answer];
+		this.currCardId = link.nextCardId;
+		this.updateResources(link.resources);
+	}
+
+	getCard() {
+		return {
+			id: this.id,
+			title: this.title,
+			description: this.description,
+			authorNickname: this.authorNickname,
+			playerCount: this.playerCount,
+			currCardId: this.currCardId,
+			stage: this.stage,
+			resources: this.resources,
+			imagePath: this.imagePath,
+		}
+	}
+
+	getNextCard() {
+		return {
+			nextCardId: this.currCardId,
+			resources: this.resources,
+		};
+	}
+}
+
 const USERS = new Users();
+const QUEST = new Quest();
 
 const app = new Koa();
 app.use(bodyParser({
@@ -260,7 +521,9 @@ app.use(async (ctx, next) => {
 	else if (method === 'POST' && path.startsWith('/api/card.do_answer')) {
 		const { cardId, answer } = ctx.request.body;
 		if (answer && cardAnswersMoc[answer]) {
-			ctx.body = cardAnswersMoc[answer];
+			QUEST.doAnswer(answer);
+			ctx.body = QUEST.getNextCard();
+			// ctx.body = cardAnswersMoc[answer];
 			ctx.status = 200;
 		}
 	}
@@ -292,34 +555,35 @@ app.use(async (ctx, next) => {
 	}
 	else if (method === 'GET' && path.startsWith('/api/quest.get')) {
 		ctx.status = 200;
-		ctx.body = {
-			id: 'quest_one_id',
-			title: 'The Quest title from network',
-			description: 'Лучший квест из тех, в которые я когда-либо играл. Реально, попробуйте это топ, отвечаю!',
-			imagePath: 'http://2d.by/wallpapers/v/vodopad_4.jpg',
-			currCardId: 'card_one_id',
-			authorNickname: 'SaneevIlya',
-			playerCount: '437',
-			stage: 'end',
-			resources: [
-				{
-					name: 'Health',
-					value: 50,
-				},
-				{
-					name: 'Sward',
-					value: 30,
-				},
-				{
-					name: 'Power',
-					value: 75,
-				},
-				{
-					name: 'Money',
-					value: 60,
-				}
-			]
-		};
+		ctx.body = QUEST.getCard();
+		// ctx.body = {
+		// 	id: 'quest_one_id',
+		// 	title: 'The Quest title from network',
+		// 	description: 'Лучший квест из тех, в которые я когда-либо играл. Реально, попробуйте это топ, отвечаю!',
+		// 	authorNickname: 'SaneevIlya',
+		// 	playerCount: '437',
+		// 	currCardId: 'card_one_id',
+		// 	imagePath: 'http://2d.by/wallpapers/v/vodopad_4.jpg',
+		// 	stage: 'end',
+		// 	resources: [
+		// 		{
+		// 			name: 'Health',
+		// 			value: 50,
+		// 		},
+		// 		{
+		// 			name: 'Sward',
+		// 			value: 30,
+		// 		},
+		// 		{
+		// 			name: 'Power',
+		// 			value: 75,
+		// 		},
+		// 		{
+		// 			name: 'Money',
+		// 			value: 60,
+		// 		}
+		// 	]
+		// };
 	}
 	else if (method === 'GET' && path.startsWith('/api/user.check_auth')) {
 		if (USERS.checkAuth(ctx.request.token)) {
